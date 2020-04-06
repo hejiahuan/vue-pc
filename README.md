@@ -77,5 +77,68 @@ module.exports={
 3请求值，返回值统一处理
 
 
+####写首页的样式
+1 在APP.vue中引入scss @import
+    <style>
+    @import './assets/scss/reset.scss'
+    </style>
+2 background-size （这个html居然忘了）
+         /* 1cover是把整个盒子全屏化，相等于拉伸了 
+           2contain不希望图片变形，拉伸
+           3百分比：相当于盒子的宽20%，高80%
+        */
+        background-size: contain;
+
+3将重复的样式放入Basc.scss中
+然后引用就可以用
+@import 'assets/basic/basc.scss';
+4 scss 用伪类&
+a{
+            display: inline-block;
+            width: 110px;
+            height: 55px;
+            &::before{
+
+            }
+          }
+
+5制作logo过渡效果
+transition是最简单的过渡效果， transform: 比他更复杂更多的效果
+transition 是最简单的过渡效果
+当点击小米图片的时候会过渡效果给另外一张图片
+https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition
+思路
+1首先用before和after加入两张图片
+2当他margin-left:-55px的时候就会变另外一张
+3transition过渡效果
+:hover的时候magin-left-55px
+鼠标离开的时候 也加入效果
+ a{
+            display: inline-block;
+            width: 110px;
+            height: 55px;
+            &::before{
+                content: '';
+                display: inline-block;
+                width: 55px;
+                height: 55px;
+                background: url('/imgs/mi-logo.png') no-repeat center;
+                background-size: contain;
+                transition: margin .2s;
+            }
+            &::after{
+                content: '';
+                display: inline-block;
+                width: 55px;
+                height: 55px;
+                background: url('/imgs/mi-home.png') no-repeat center;
+                background-size: contain;
+            } 
+           &:hover::before{
+             margin-left: -55px;
+              transition: margin .2s;
+           }
+          }
+
 
 

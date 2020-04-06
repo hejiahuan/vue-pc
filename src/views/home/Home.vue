@@ -1,20 +1,25 @@
 <template>
   <div>
-      dddd
+       <nav-hearder/>
   </div>
 </template>
 
 <script>
+import NavHearder from 'components/common/NavHearder'
+
 export default {
     name:"Home",
     mounted() {
-         this.$ls.set('foo', 'boo');
 
     },
+    components:{
+      NavHearder
+    }
 
 }
 </script>
 
-<style>
-
+<style lang="scss">
+  
+  
 </style>
