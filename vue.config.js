@@ -11,6 +11,22 @@ module.exports={
             }
         }
 
+    },
+    devServer:{
+        host:'localhost',
+        port:8080,
+        proxy:{
+            //意思是当我们访问xxxx/api/xxx的时候，就会被代理到
+            //https://www.imooc.com'中
+            '/api':{
+                target:'https://www.imooc.com',
+                changeOrigin:true,
+                pathRewrite:{
+                    //https://www.imooc.com/api代理xxxx/api
+                    '/api':'/api'
+                }
+            }
+        }
     }
 
 }
