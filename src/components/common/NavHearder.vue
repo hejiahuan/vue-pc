@@ -27,104 +27,33 @@
           <div class="item-menu">
             <span>小米手机</span>
             <div class="children">
-              <ul class="product">
+              <ul class="product"
+                        v-for='(item,index) in phoneList'
+                        :key='index'>
                 <li>
-                  <a href target="_blank">
+                  <a :href="'/product/'+item.id" target="_blank">
                     <div class="pro_img">
                       <img
-                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
-                        alt
+                        :src="item.mainImage"
+                        :alt="item.subtitle"
                       />
                     </div>
-                    <div class="pro_name">小米CC9</div>
-                    <div class="pro_price">1799元</div>
+                    <div class="pro_name">{{item.name}}</div>
+                    <div class="pro_price">{{item.price |currency}}</div>
                   </a>
                 </li>
               </ul>
-              <ul class="product">
-                <li>
-                  <a href target="_blank">
-                    <div class="pro_img">
-                      <img
-                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
-                        alt
-                      />
-                    </div>
-                    <div class="pro_name">小米CC9</div>
-                    <div class="pro_price">1799元</div>
-                  </a>
-                </li>
-              </ul>
-              <ul class="product">
-                <li>
-                  <a href target="_blank">
-                    <div class="pro_img">
-                      <img
-                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
-                        alt
-                      />
-                    </div>
-                    <div class="pro_name">小米CC9</div>
-                    <div class="pro_price">1799元</div>
-                  </a>
-                </li>
-              </ul>
-              <ul class="product">
-                <li>
-                  <a href target="_blank">
-                    <div class="pro_img">
-                      <img
-                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
-                        alt
-                      />
-                    </div>
-                    <div class="pro_name">小米CC9</div>
-                    <div class="pro_price">1799元</div>
-                  </a>
-                </li>
-              </ul>
-              <ul class="product">
-                <li>
-                  <a href target="_blank">
-                    <div class="pro_img">
-                      <img
-                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
-                        alt
-                      />
-                    </div>
-                    <div class="pro_name">小米CC9</div>
-                    <div class="pro_price">1799元</div>
-                  </a>
-                </li>
-              </ul>
-              <ul class="product">
-                <li>
-                  <a href target="_blank">
-                    <div class="pro_img">
-                      <img
-                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
-                        alt
-                      />
-                    </div>
-                    <div class="pro_name">小米CC9</div>
-                    <div class="pro_price">1799元</div>
-                  </a>
-                </li>
-              </ul>
+             
             </div>
           </div>
           <div class="item-menu">
             <span>RedMi红米</span>
-            <div class="children">
-
-            
-
-            </div>
+            <div class="children"></div>
           </div>
           <div class="item-menu">
             <span>电视</span>
             <div class="children">
-                 <ul class="product">
+              <ul class="product">
                 <li>
                   <a href target="_blank">
                     <div class="pro_img">
@@ -208,7 +137,6 @@
                   </a>
                 </li>
               </ul>
-
             </div>
           </div>
         </div>
@@ -225,7 +153,37 @@
 
 <script>
 export default {
-  name: "NavHearder"
+  name: "NavHearder",
+  data() {
+    return {
+      username:"jack",
+      phoneList:[]
+    }
+  },
+  filters:{
+    currency(val){
+      if(!val)return '0.00'
+      return "￥"+val.toFixed(2)+'元'
+
+    }
+  },
+    mounted() {
+      this.getProductList()
+    },
+    methods: {
+       getProductList(){
+         this.axios.get('/products',{
+           params:{
+             categoryId:'100012'
+           }
+         }).then(res=>{
+           const {list}=res;
+           //这里用了比大小，也就要用if else
+           this.phoneList=Math.max(list.length,6) >6 ? list.splice(0,6):list;
+
+         })
+       }
+    }
 };
 </script>
 
@@ -315,18 +273,16 @@ export default {
           flex: 1;
           font-size: 16px;
           color: #333;
-          font-weight: 600;
           span {
             cursor: pointer;
           }
-          &:hover{
+          &:hover {
             color: $colorA;
-            .children{
+            .children {
               opacity: 1;
               height: 220px;
             }
           }
-          
 
           .children {
             position: absolute;
@@ -341,7 +297,8 @@ export default {
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 0.5s ease-out 0.4s ;
+            transition: all 0.5s ease-out 0.4s;
+            background-color: #fff;
 
             .product {
               display: flex;
@@ -351,7 +308,9 @@ export default {
               height: 220px;
               font-size: 12px;
               position: relative;
-
+              img{
+                 width: 100%; 
+              }
               a {
                 text-align: center;
                 line-height: 10px;

@@ -11,7 +11,7 @@ import storage from "./stroage"
 Vue.use(storage.Storage,storage.options);
 
 //axios的全局设置并且设置拦截器
-axios.defaults.baseURL="xxxx";
+axios.defaults.baseURL="/api";
 axios.defaults.timeout=8000;
 
 axios.interceptors.response.use(config=>{

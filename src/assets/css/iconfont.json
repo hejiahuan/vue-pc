@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2023045",
+      "name": "满就送",
+      "font_class": "manjiusong",
+      "unicode": "e506",
+      "unicode_decimal": 58630
+    },
+    {
+      "icon_id": "2320574",
+      "name": "维修 (1)",
+      "font_class": "weixiu",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "2803224",
+      "name": "7天无理由",
+      "font_class": "tianwuliyou",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "12237153",
+      "name": "15天无理由退货",
+      "font_class": "tianwuliyoutuihuo",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "13368495",
+      "name": "地址",
+      "font_class": "dizhi",
+      "unicode": "e503",
+      "unicode_decimal": 58627
+    }
+  ]
+}

@@ -181,3 +181,33 @@ hover,做鼠标点上去，和离开的效果
 
 CSS 完全可以做不同分类导航，弄出不同数据！！！！！
 
+####后台得到分类数据(我们用nginx代理的方式做跨域)
+1比如我们分类只允许放6个，但是后台有很多数据，返回可能20几个，怎么办
+数组截取splice(0,6)
+所以前端要做判断，只能得到6个数据
+![03.png]
+####开发footer
+
+####售后条
+vertical-align（只适用于行内元素）
+vertical-align（vertical是垂直的意思，垂直对齐，默认是基线对齐，用在图标和字体的对齐当中）
+https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align
+售后条主要是那个小图标，一般都用before伪类
+有的是用精灵图做的，有的是画的
+
+1我们导入淘宝的iconfont选的图标
+我们用的第一种写法，导入到css后
+2我们下体用的是flex1均分
+3然后我们下面有右边都是border-right的竖条，这个我们用before或者after伪类做
+但是做完后需要消除第一个或者最后一个的竖条，这个时候你可以给第一个或者最后一个设置class
+然后 把他before或者after border去掉就行了
+.first {
+      &::before {
+        border: none;
+      }
+    }
+4当我们鼠标略过的时候要变色hover,我们建议以后变色都设置transation:color 0.2s这样效果特别好
+
+
+
+
