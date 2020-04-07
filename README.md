@@ -169,3 +169,15 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing
   @include flex();
 
 
+####导航菜单的下拉功能
+1首先把下拉菜单做出来用的是display:absolute，top,left设置好位置
+然后设置好高度，宽度
+2用伪类
+hover,做鼠标点上去，和离开的效果
+我们在鼠标没放之前opacity为0,并且overflow:hidden
+放上后，透明度为1，并且设置高度
+3如果刚放下去，下面就不见了，我们可以做过渡效果
+ transition: all 0.5s ease-out 0.4s ;   放在上面0.4S才出现，这样可以解决这个问题。
+
+CSS 完全可以做不同分类导航，弄出不同数据！！！！！
+
