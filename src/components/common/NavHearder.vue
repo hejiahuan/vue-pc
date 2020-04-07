@@ -37,7 +37,12 @@
             <div class="children"></div>
           </div>
         </div>
-        <div class="search"></div>
+        <div class="search">
+          <div class="wrapper">
+              <input type="text" name='keyword'>
+              <a href="javascript:;"></a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -51,7 +56,7 @@ export default {
 
 <style lang="scss">
 @import "assets/basic/basc.scss";
-
+@import "assets/scss/mixin.scss";
 .header {
   .nav_topbar {
     height: 39px;
@@ -88,23 +93,20 @@ export default {
         }
 
         span {
-          display: inline-block;
-          width: 16px;
-          height: 12px;
-          background: url("/imgs/icon-cart-checked.png") no-repeat center;
+          @include bgImg(16px,12px,"/imgs/icon-cart-checked.png");
           margin-right: 4px;
-          background-size: contain;
         }
       }
     }
   }
 
   .nav_header {
+    
     .container {
       height: 112px;
-      display: flex;
-      justify-content: space-between;
-      align-content: center;
+      //引入mixin函数方式
+      @include flex();
+
       .head-logo {
         display: inline-block;
         width: 55px;
@@ -116,20 +118,14 @@ export default {
           height: 55px;
           &::before {
             content: "";
+            @include bgImg(55px,55px,"/imgs/mi-logo.png");
             display: inline-block;
-            width: 55px;
-            height: 55px;
-            background: url("/imgs/mi-logo.png") no-repeat center;
-            background-size: contain;
             transition: margin 0.2s;
           }
           &::after {
             content: "";
             display: inline-block;
-            width: 55px;
-            height: 55px;
-            background: url("/imgs/mi-home.png") no-repeat center;
-            background-size: contain;
+             @include bgImg(55px,55px,"/imgs/mi-home.png");
           }
           &:hover::before {
             margin-left: -55px;
@@ -145,9 +141,35 @@ export default {
           font-size: 16px;
           color: #333;
           font-weight: 600;
-          line-height: 60px;
           span{
             cursor: pointer;
+          }
+        }
+      }
+
+      .search{
+        width: 319px;
+        .wrapper{
+          height: 50px;
+          border: 1px solid #e0e0e0;
+          display: flex;
+          align-items: center;
+          input{
+            border: none;
+            border-right: 1px solid #e0e0e0;
+            width: 264px;
+            height: 50px;
+            padding-left: 14px;
+            box-sizing: border-box;
+            // box-sizing: border-box;该如何计算定义元素的总宽度和高度
+            // content-box | border-box  默认cotent-box
+            // border-box (最真正的宽高)计算  实际宽高是width减去(border + padding)的值
+
+          }
+          a{
+            display: inline-block;
+              @include bgImg(18px,18px,"/imgs/icon-search.png");
+            margin-left: 17px;
           }
         }
       }

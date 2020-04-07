@@ -141,4 +141,31 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition
           }
 
 
+####新学习了一个border-box属性
+https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing
+ // box-sizing: border-box;该如何计算定义元素的总宽度和高度
+        // content-box | border-box  默认cotent-box
+        // border-box (最真正的宽高)计算  实际宽高是width减去(border + padding)的值
+
+####scss引入混入（公共函数样式）掌握
+其实就是一个方法 name自己定
+@mixin name {
+    
+}
+
+例子
+@mixin flex($hov:space-between,$col:center) {
+    display: flex;
+    justify-content: $hov;
+    align-items: $col;
+    
+}
+
+使用
+1引入css
+@import "assets/scss/mixin.scss";
+2使用
+  //引入mixin函数方式
+  @include flex();
+
 
