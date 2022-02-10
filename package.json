@@ -20,7 +20,7 @@
     "axios": "^0.19.2",
     "element-ui": "^2.13.0",
     "jsonp": "^0.2.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "sass-loader": "^8.0.2",
     "vue-awesome-swiper": "^4.1.0",
     "vue-axios": "^2.1.5",
